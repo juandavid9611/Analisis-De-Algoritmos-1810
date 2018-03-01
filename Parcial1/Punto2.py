@@ -4,38 +4,35 @@ Created on Wed Feb 28 07:42:16 2018
 
 @author: Juanda
 """
-
+from numpy import *
 import math
 
 
 def f(x): return math.e**x      
 
-def AitkenMethod():
-    x0 = 0                     
-    tolerance = 1e-10          
-    epsilon = 1e-16            
-    maxIterations = 20          
-    haveWeFoundSolution = 0
-    for i in range(maxIterations):
-        x1 = f(x0)
-        x2 = f(x1)
+def Aitken(x0,x1,x2):
+    return x2-((x2-x1)**2)/(x2-2*x1+x0)
+def serTaylor(x,k):
+    return sum((x**i)/math.factorial(i) for i in range(k+1))
     
-        denominator = (x2 - x1) - (x1 - x0);
+def detConvergencia():
+    y=1
+    x0=serTaylor(y,0)
+    x1=serTaylor(y,1)
+    x2=serTaylor(y,2)
+    err=1
+    i=3
+    p0=Aitken(x0,x1,x2)
+    print('Pn(x)','\t\t','Error')
+    while(err>1.e-8):
+        p1=p0
+        print(p0,'\t\t',err)
+        x0=serTaylor(y,i-2)
+        x1=serTaylor(y,i-1)
+        x2=serTaylor(y,i)
+        i+=1
+        p0=Aitken(x0,x1,x2)
+        err=abs(p0-p1)/abs(p0)
+
+detConvergencia()
     
-        if(abs(denominator) < epsilon):         
-            print('WARNING: denominator is too small')
-            break      
-    
-        aitkenX = x2 - ( (x2 - x1)**2 )/denominator
-        
-        if(abs(aitkenX - x2) < tolerance):       
-            print('The fixed point is ', aitkenX)        
-            haveWeFoundSolution = 1
-            break
-    
-        x0 = aitkenX                                      
-    
-    if(haveWeFoundSolution == 0):   
-        print('Luego su radio de convergencia es r = 1')
-        print('Ultimo valor calculado de la serie ', aitkenX)
-AitkenMethod()
