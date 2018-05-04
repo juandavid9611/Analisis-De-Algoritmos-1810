@@ -6,5 +6,5 @@
   C = 100J/(Kg/K) <br />
 **Salida**<br /><br />
 ![alt text](https://github.com/juandavid9611/Analisis-Numerico-1810/blob/master/Taller%20Ecuaciones%20Diferenciales/Tabla.png)
-**Grafica** <br />
+**Grafica** <br /><br />
 ![alt text](https://github.com/juandavid9611/Analisis-Numerico-1810/blob/master/Taller%20Ecuaciones%20Diferenciales/Grafica.png)<br /><br />
