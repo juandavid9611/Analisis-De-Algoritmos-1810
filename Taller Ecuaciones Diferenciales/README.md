@@ -1,4 +1,4 @@
-***Punto1: Cambio de temperatura***<br /><br />
+****Punto1: Cambio de temperatura****<br /><br />
 **Condiciones iniciales** <br />
   T0 = 180K <br />
   Te = 200k <br />
